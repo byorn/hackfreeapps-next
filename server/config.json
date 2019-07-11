@@ -1,0 +1,14 @@
+{
+    "development": {
+        "config_id": "development",
+        "clientID": "54773a00c9e4b421e1ed",
+        "clientSecret": "0209a310c861b1b2608fe23bd6e88acbb7234a24",
+        "callbackURL": "http://localhost:9000/auth/github/callback"
+    },
+    "production": {
+        "config_id": "production",
+        "clientID": "54773a00c9e4b421e1ed",
+        "clientSecret": "0209a310c861b1b2608fe23bd6e88acbb7234a24",
+        "callbackURL": "http://www.hackfreeapps.org/login/auth/github/callback"
+    }
+}

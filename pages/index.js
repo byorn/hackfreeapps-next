@@ -55,6 +55,15 @@ const Index = () => (
  
 
 `}</style>
+
+
+    <script src="http://www.hackfreeapps.org/vendor/jquery/jquery.min.js"></script>
+    <script src="http://www.hackfreeapps.org/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="http://www.hackfreeapps.org/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="http://www.hackfreeapps.org/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="http://www.hackfreeapps.org/js/jqBootstrapValidation.js"></script>
+    <script src="http://www.hackfreeapps.org/js/contact_me.js"></script>
+    <script src="http://www.hackfreeapps.org/js/freelancer.min.js"></script>
    
   
     </div>
