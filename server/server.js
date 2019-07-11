@@ -53,7 +53,8 @@ app.prepare().then(() => {
   passport.authenticate('github', { failureRedirect: '/login' }),
   function(req, res) {
       console.log("success");
-        res.redirect('/');
+      if(dev)  res.redirect('/');
+      res.redirect('/login');
   });
 
   server.get('/a', (req, res) => {
