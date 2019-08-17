@@ -56,8 +56,11 @@ app.prepare().then(() => {
   server.get('/auth/github/callback', 
   passport.authenticate('github', { failureRedirect: '/login' }),
   function(req, res) {
-      console.log("success");
-      res.redirect("/hackfreeapps/"+req.user.id);
+      if(dev){
+        res.redirect("/hackfreeapps/"+req.user.id);
+      }else{
+        res.redirect("/login/hackfreeapps/"+req.user.id);
+      }
   });
 
 
@@ -70,7 +73,7 @@ app.prepare().then(() => {
       const isValid = await restclient.checkUser(user.token)
      
       if(isValid){
-        return app.render(req, res, '/Index', { userdetails: user.user })
+        return app.render(req, res, '/index', { userdetails: user.user })
       }
       else{
        res.redirect('/auth/github');
@@ -81,10 +84,7 @@ app.prepare().then(() => {
        
   })
 
-  server.get('/', (req, res) => {
-    return app.render(req, res, '/Index', req.query)
-  })
-  
+    
   server.get("/url", (req, res, next) => {
     res.send(["Tony","Lisa","Michael","Ginger","Food"]);
   });
