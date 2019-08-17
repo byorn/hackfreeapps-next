@@ -1,19 +1,12 @@
-import withLayout from '../components/withLayout';
-const Index = (props) => {
-
-  if(props.username){
-  return (
-     <div>hello {props.username}</div>
-  );
-  }else{
-    return (
-      <div>no query hello </div>
-   );
-  }
-}
+import Layout from '../components/Layout';
+const Index = (props) => (
+   <Layout>
+     <div>hello world {props.userdetails?props.userdetails.displayName:""}</div>
+   </Layout>
+)
   
-Index.getInitialProps = ({ query: { username } }) => {
-  return { username }
+Index.getInitialProps = ({ query: { userdetails } }) => {
+  return { userdetails }
 }
 
 

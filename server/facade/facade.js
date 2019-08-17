@@ -6,7 +6,6 @@ exports.saveOrUpdateUser = async function(authToken, gitHubUserObj){
     if(user){
         user.user = gitHubUserObj;
         user.token = authToken;  
-
         const objUpdated = await User.findOneAndUpdate({id: gitHubUserObj.id}, user, {new: true});
         console.log(objUpdated)
     }
@@ -21,10 +20,8 @@ exports.saveOrUpdateUser = async function(authToken, gitHubUserObj){
       
 }
 
-exports.getToken = async function(id){
+exports.getUser = async function(id){
     let user =  await User.findOne({id});
-    if(user){
-        return user.token;
-    }
-    return null;
+    
+    return user;
 }

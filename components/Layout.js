@@ -1,7 +1,7 @@
 import React  from "react";
 import Head from 'next/head';
-const withLayout = (Page) => {
-  return ()=>(
+const Layout = (props) => (
+  
         <div>
               <Head>
                 <title>HackFreeApps</title>
@@ -46,7 +46,11 @@ const withLayout = (Page) => {
                     <div className="container">
                         <div className="row">
                         <div className="col-lg-12 ml-auto">
-                            <p className="lead"><Page/></p>
+                            <p className="lead">
+
+                               {props.children}
+
+                            </p>
                         </div>
                         
                         </div>
@@ -70,6 +74,6 @@ const withLayout = (Page) => {
     <script src="http://www.hackfreeapps.org/js/freelancer.min.js"></script>
           
         </div>
-        )
-};
-export default withLayout;
+)
+
+export default Layout;

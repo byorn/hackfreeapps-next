@@ -21,10 +21,6 @@ const app = next({ dev })
 const handle = app.getRequestHandler()
 
 
-
-
-
-
 passport.use(new GitHubStrategy({
   clientID: environmentConfig.clientID,
   clientSecret: environmentConfig.clientSecret,
@@ -48,12 +44,6 @@ passport.deserializeUser(function(obj, cb) {
 });
 
 
-const restrictAccess = (req, res, next) => {
-  if (!req.isAuthenticated()) return res.redirect("/auth/github");
-  next();
-};
-
-
 app.prepare().then(() => {
   const server = express()
   server.use(passport.initialize());
@@ -74,14 +64,13 @@ app.prepare().then(() => {
 
   server.get('/hackfreeapps/:id', async (req, res) => {
     
-    const token = await facade.getToken(req.params.id);
+    const user = await facade.getUser(req.params.id);
 
-    if(token){
-      const isValid = await restclient.checkUser(token)
-
+    if(user && user.token){
+      const isValid = await restclient.checkUser(user.token)
      
       if(isValid){
-        return app.render(req, res, '/Index', { username: req.params.id })
+        return app.render(req, res, '/Index', { userdetails: user.user })
       }
       else{
        res.redirect('/auth/github');
@@ -89,6 +78,8 @@ app.prepare().then(() => {
        return app.render(req, res, '/Index', { username: req.params.id })
       }
     }
+
+    res.redirect('/');
        
   })
 
