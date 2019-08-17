@@ -1,6 +1,7 @@
+import withLayout from '../components/withLayout'
 const sample = () => {
 
-    return <div>hello</div>
+    return <div>byorn desilva</div>;
 }
 
-export default sample;
+export default withLayout(sample);
