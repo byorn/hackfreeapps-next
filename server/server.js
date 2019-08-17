@@ -74,8 +74,6 @@ app.prepare().then(() => {
       }
       else{
        res.redirect('/auth/github');
-       
-       return app.render(req, res, '/Index', { username: req.params.id })
       }
     }
 
