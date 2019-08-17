@@ -1,5 +1,5 @@
 const _error = (props) => {
-    console.log(props);
+    
     return (<div>error </div>);
 }
    
