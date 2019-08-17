@@ -94,10 +94,7 @@ app.prepare().then(() => {
   })
 
   server.listen(port, err => {
-    if (err) throw err
-    console.log(`> Ready on http://localhost:${port}`)
+    if (err) { console.log(err); throw err }
+    console.log(`>>>>>> Ready on http://localhost:${port}`)
   })
-}).catch(ex => {
-  console.error(ex.stack);
-  process.exit(1);
-});
+})
