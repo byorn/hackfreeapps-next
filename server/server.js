@@ -73,7 +73,8 @@ app.prepare().then(() => {
       const isValid = await restclient.checkUser(user.token)
      
       if(isValid){
-        return app.render(req, res, '/index', { userdetails: user.user })
+        const repos =  await facade.getAllRepos();
+        return app.render(req, res, '/index', { userdetails: user.user, repos })
       }
       else{
        res.redirect('/auth/github');

@@ -1,4 +1,6 @@
 const User = require('../modal/User');
+const Repo = require('../modal/Repo');
+
 exports.saveOrUpdateUser = async function(authToken, gitHubUserObj){
 
     let user =  await User.findOne({id:gitHubUserObj.id});
@@ -24,4 +26,8 @@ exports.getUser = async function(id){
     let user =  await User.findOne({id});
     
     return user;
+}
+
+exports.getAllRepos = async function(){
+        return await Repo.find({});
 }

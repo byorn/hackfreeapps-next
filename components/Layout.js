@@ -12,7 +12,7 @@ const Layout = (props) => (
                 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"/>
                 <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
                 <link href="http://www.hackfreeapps.org/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css"/>
-                <link href="http://www.hackfreeapps.org/css/freelancer.min.css" rel="stylesheet"/>
+                 <link href="http://www.hackfreeapps.org/css/freelancer.min.css" rel="stylesheet"/>
                 <link rel="icon" href="img/favicon.png"/>
              </Head>
 
@@ -46,11 +46,11 @@ const Layout = (props) => (
                     <div className="container">
                         <div className="row">
                         <div className="col-lg-12 ml-auto">
-                            <p className="lead">
+                            
 
                                {props.children}
 
-                            </p>
+            
                         </div>
                         
                         </div>
@@ -72,7 +72,7 @@ const Layout = (props) => (
     <script src="http://www.hackfreeapps.org/js/jqBootstrapValidation.js"></script>
     <script src="http://www.hackfreeapps.org/js/contact_me.js"></script>
     <script src="http://www.hackfreeapps.org/js/freelancer.min.js"></script>
-          
+    <script src="https://kit.fontawesome.com/43f71c1f1e.js"></script>  
         </div>
 )
 
