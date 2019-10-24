@@ -56,11 +56,9 @@ app.prepare().then(() => {
   server.get('/auth/github/callback', 
   passport.authenticate('github', { failureRedirect: '/login' }),
   function(req, res) {
-      if(dev){
-        res.redirect("/hackfreeapps/"+req.user.id);
-      }else{
-        res.redirect("/login/hackfreeapps/"+req.user.id);
-      }
+     
+       res.redirect("/hackfreeapps/"+req.user.id);
+     
   });
 
 
