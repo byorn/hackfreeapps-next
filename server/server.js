@@ -48,7 +48,7 @@ app.prepare().then(() => {
   const server = express()
   server.use(passport.initialize());
   server.use(passport.session());
-
+  server.use(express.static('public'));
   
   server.get('/auth/github',  passport.authenticate('github'));
 
@@ -74,7 +74,7 @@ app.prepare().then(() => {
      
       if(isValid){
         const repos =  await facade.getAllRepos();
-        return app.render(req, res, '/index', { userdetails: user.user, repos })
+        return app.render(req, res, '/userpage', { userdetails: user.user, repos })
       }
       else{
        res.redirect('/auth/github');
@@ -85,6 +85,9 @@ app.prepare().then(() => {
        
   })
 
+  server.get("/", (req, res, next) => {
+    return app.render(req, res, '/index', { })
+  });
     
   server.get("/url", (req, res, next) => {
     res.send(["Tony","Lisa","Michael","Ginger","Food"]);
