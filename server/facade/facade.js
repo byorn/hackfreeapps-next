@@ -7,9 +7,9 @@ exports.saveOrUpdateUser = async function(authToken, gitHubUserObj){
 
     if(user){
         user.user = gitHubUserObj;
-        user.token = authToken;  
+        user.token = authToken;
         const objUpdated = await User.findOneAndUpdate({id: gitHubUserObj.id}, user, {new: true});
-        console.log(objUpdated)
+      
     }
     else{
         user= new User();
@@ -17,9 +17,15 @@ exports.saveOrUpdateUser = async function(authToken, gitHubUserObj){
         user.user = gitHubUserObj;
         user.token = authToken;
         const objSaved = await user.save();
-        console.log("object saved new")
+    
     }
+
+    return user;
       
+}
+
+exports.updateLoggingIn = async function(id, loggingIn){
+        await User.update({id:id},{logging_in:loggingIn});
 }
 
 exports.getUser = async function(id){

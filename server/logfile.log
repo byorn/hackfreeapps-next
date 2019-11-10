@@ -1,0 +1,4 @@
+{"message":"server started","level":"info"}
+{"message":{"from":"byorn.desilva@gmail.com","to":"byorn.desilva@gmail.com","html":"<b>hello</b>"},"level":"info"}
+{"level":"error"}
+{"message":{"accepted":["byorn.desilva@gmail.com"],"rejected":[],"envelopeTime":954,"messageTime":1124,"messageSize":257,"response":"250 2.0.0 OK  1571220688 p17sm23091340pfn.50 - gsmtp","envelope":{"from":"byorn.desilva@gmail.com","to":["byorn.desilva@gmail.com"]},"messageId":"<70c5b5f4-8284-270a-ea6b-1dcaa89fb0a9@gmail.com>"},"level":"info"}
