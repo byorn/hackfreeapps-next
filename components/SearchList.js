@@ -1,4 +1,6 @@
 import { Card,Button, Col, Container, Row } from 'react-bootstrap';
+import { MyComp } from './MyComp';
+
 const SearchList = (props)=>{
 
     const {repos} = props;
@@ -23,6 +25,7 @@ const SearchList = (props)=>{
                 <a href={o.github_repo.homepage}> {o.github_repo.homepage} </a>
                 </Card.Text>
                 <Button variant="primary">More Info ...</Button>
+                <MyComp name="byorn"/>
               </Card.Body>
             </Card>
             </Col>
