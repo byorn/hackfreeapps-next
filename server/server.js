@@ -110,10 +110,13 @@ app.prepare().then(() => {
        
   })
 
-  server.get("/", (req, res, next) => {
-    // Cookies that have not been signed
-  console.log('Cookies: ', req.cookies)
-    return app.render(req, res, '/index', { })
+  server.get("/", async(req, res, next) => {
+    
+    console.log('Cookies: ', req.cookies)
+
+    const repos =  await facade.getAllRepos();
+
+    return app.render(req, res, '/index', { repos })
   });
     
   server.get("/url", (req, res, next) => {
