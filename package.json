@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon server/server.js",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_ENV=production node server/server.js",
     "type-check": "tsc && node dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
