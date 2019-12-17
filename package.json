@@ -36,7 +36,6 @@
     "@types/next": "^9.0.0",
     "@types/node": "^12.12.17",
     "@types/react": "^16.9.16",
-    "@zeit/next-typescript": "^1.1.1",
     "typescript": "^3.7.3"
   }
 }

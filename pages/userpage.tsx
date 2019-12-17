@@ -2,13 +2,19 @@ import Selection from '../components/Selection';
 import SearchList from "../components/SearchList";
 import Layout from "../components/Layout";
 import { useState } from 'react';
+import { NextPage, NextPageContext } from 'next';
 
-const UserPage = (props) => {
-  const { userdetails, repos } = props;
+interface MyPropsInterface{
+  userdetails: any,
+  repos: any
+}
+
+const UserPage:NextPage<MyPropsInterface> = (props) => {
+ 
   const [count, setCount] = useState("init");
 
   return (
-    <Layout username={userdetails.username}>
+    <Layout username={props.userdetails.username}>
    
       <section className="container-fluid bg-primary text-center">
         <div className="row">
@@ -24,7 +30,7 @@ const UserPage = (props) => {
         </div>
         <div className="row mt-5 pt-2">
           <div className="col-sm-12">
-              <SearchList repos={repos}/>
+              <SearchList repos={props.repos}/>
           </div>
         </div>           
       </section>
@@ -33,8 +39,11 @@ const UserPage = (props) => {
   )
 }
 
-UserPage.getInitialProps = ({ query: { userdetails, repos } }) => {
-  return { userdetails, repos }
+
+
+UserPage.getInitialProps = async (ctx: NextPageContext) => {
+  const props: MyPropsInterface = { "userdetails": ctx.query.userdetails, "repos":ctx.query.repos}
+  return props;
 }
 
 
