@@ -2,7 +2,7 @@ import React  from "react";
 import Head from 'next/head';
 const Layout = (props) => {
   
-    const  {username} = props;
+    const  {username, hideStartDetails} = props;
 
     return (
     <>
@@ -63,7 +63,7 @@ crossOrigin="anonymous"
       </div>
     </nav>
 
-
+   {hideStartDetails? <></>:
     <header className="masthead bg-primary text-white text-center">
       <div className="container">
         <h3 className="font-weight-dark mb-0">Need coding experience ?</h3>
@@ -71,6 +71,7 @@ crossOrigin="anonymous"
         <h3 className="font-weight-dark mb-0">Find a filtered list of <i>`Easy to Get Started`</i> Projects</h3>
       </div>
     </header>
+   }
 
 
     {props.children}

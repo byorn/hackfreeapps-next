@@ -108,6 +108,14 @@ app.prepare().then(() => {
 
     res.redirect('/');
        
+  });
+
+  server.get("/repository/:id", async(req,res)=>{
+    console.log("####" + req.params.id);
+    const repo = await facade.findRepo(req.params.id);
+    console.log("####1212" + repo);
+    return app.render(req, res, '/repository_detail_page', { repo })
+
   })
 
   server.get("/", async(req, res, next) => {

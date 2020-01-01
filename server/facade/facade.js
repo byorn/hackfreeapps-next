@@ -37,3 +37,8 @@ exports.getUser = async function(id){
 exports.getAllRepos = async function(){
         return await Repo.find({});
 }
+
+exports.findRepo = async function(id){
+   
+    return await Repo.findById(id);
+}
