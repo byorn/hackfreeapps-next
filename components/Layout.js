@@ -38,7 +38,7 @@ crossOrigin="anonymous"
 
     <nav className="navbar navbar-expand-lg bg-secondary fixed-top" id="mainNav">
       <div className="container">
-        <a className="navbar-brand js-scroll-trigger" href="#page-top">HackFreeApps</a>
+        <a className="navbar-brand js-scroll-trigger" href="/">HackFreeApps</a>
       
         <button className="navbar-toggler  text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" >
           Menu
@@ -68,7 +68,7 @@ crossOrigin="anonymous"
       <div className="container">
         <h3 className="font-weight-dark mb-0">Need coding experience ?</h3>
         <img className="img-fluid mt-2 mb-2 d-block mx-auto" style={{  width: '20%' }} src="/img/profile.png" alt="" />
-        <h3 className="font-weight-dark mb-0">Find a filtered list of <i>`Easy to Get Started`</i> Projects</h3>
+        <h3 className="font-weight-dark mb-0">Find <i>`Most relevant`</i> and <i>`Easy to Get Started`</i> projects</h3>
       </div>
     </header>
    }
@@ -81,8 +81,8 @@ crossOrigin="anonymous"
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <h4 className="text-uppercase mb-4">Get work experience</h4>
-              <p className="lead mb-0">Learn new technologies and new industry software by contributing to open source enterprise apps. Get feedback from the project owners and showcase it to your next potential employer.
+              <h4 className="text-uppercase mb-4">Manage a portfolio of all your contributions</h4>
+              <p className="lead mb-0">Sharpen your coding skills, interact with remote teams, and also gain new business knowledge by contributing to open source software. Get feedback from the project owners and showcase it to your next potential employer  @  
               <a href="http://hackfreeapps.org">hackfreeapps.org</a>.</p>
             </div>
           </div>
@@ -91,7 +91,7 @@ crossOrigin="anonymous"
 
       <div className="copyright py-4 text-center text-white">
         <div className="container">
-          <small>Copyright &copy; hackfreeapps.org 2019</small>
+          <small>Copyright &copy; hackfreeapps.org 2020</small>
         </div>
       </div>
 

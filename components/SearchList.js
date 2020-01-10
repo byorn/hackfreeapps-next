@@ -24,8 +24,8 @@ const SearchList = (props)=>{
                 <br/>
                 <a href={o.github_repo.homepage}> {o.github_repo.homepage} </a>
                 </Card.Text>
-                <Button variant="primary" href={`/repository/${o._id}`}>More Info ...</Button>
-                <MyComp name="byorn"/>
+                <Button variant="primary" href={`/repository/${o._id}`}>More ...</Button>
+               
               </Card.Body>
             </Card>
             </Col>
@@ -46,7 +46,7 @@ const SearchList = (props)=>{
                 <br/>
                 <a href={o.github_repo.homepage}> {o.github_repo.homepage} </a>
                 </Card.Text>
-                <Button variant="primary">Go somewhere</Button>
+                <Button variant="primary" href={`/repository/${o._id}`}>More ...</Button>
               </Card.Body>
             </Card>
             </Col>
