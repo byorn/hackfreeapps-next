@@ -12,7 +12,7 @@ const SearchList = (props)=>{
       if(i%4!==0){
       
           listOfRepoItems[counter].push(
-            <Col key={o._id}>
+            <Col key={o._id} className="mb-3">
               <Card  className="cardWidth">
               <Card.Img variant="top" src={o.github_repo.owner.avatar_url} />
               <Card.Body>
@@ -34,7 +34,7 @@ const SearchList = (props)=>{
           counter+=1;
           listOfRepoItems.push([]);
           listOfRepoItems[counter].push(
-            <Col key={o._id}>
+            <Col key={o._id} className="mb-3">
               <Card   className="cardWidth">
               <Card.Img variant="top" src={o.github_repo.owner.avatar_url} />
               <Card.Body>
@@ -58,7 +58,7 @@ const SearchList = (props)=>{
       let refined=[];
       listOfRepoItems.forEach((arr, i)=>{
         refined.push(
-        <Row key={i}>
+        <Row key={i} className="mt-5 mb-3">
           {arr}
         </Row>
         )
@@ -70,9 +70,13 @@ const SearchList = (props)=>{
 
     <style>
     {`
-      .cardWidth {
-        width: 15rem ;
+     
+      @media screen and (max-width: 640px) {
+        .cardWidth {
+          width: 18rem ;
+        }
       }
+   
     `}
   </style>
   

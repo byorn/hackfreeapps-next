@@ -2,6 +2,7 @@ import React from "react";
 import Selection from '../components/Selection';
 import SearchList from "../components/SearchList";
 import Layout from "../components/Layout";
+import { Row, Col } from "react-bootstrap";
 
 const Index = (props) => {
 
@@ -12,22 +13,22 @@ const Index = (props) => {
     <Layout>
 
       <section className="container-fluid bg-primary text-center">
-        <div className="row">
-          <div className="col-sm-4">
+        <Row>
+          <Col xs="0" lg="4">
               
-          </div>
-          <div className="col-sm-4">
+          </Col>
+          <Col xs="12" md="12" lg="4">
               <Selection/>
-          </div>
-          <div className="col-sm-4">
+          </Col>
+          <Col xs="0" lg="4">
               
-          </div>
-        </div>
-        <div className="row mt-5 pt-2">
-          <div className="col-sm-12">
+          </Col>
+        </Row>
+        <Row>
+          <Col>
               <SearchList repos={repos}/>
-          </div>
-        </div>           
+          </Col>
+        </Row>           
       </section>
 
       </Layout>

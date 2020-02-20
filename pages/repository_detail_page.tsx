@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { NextPage, NextPageContext } from 'next';
 import Layout from '../components/Layout';
+import Comments from '../components/Comments';
 import axios from 'axios';
 
 interface IProps{
@@ -13,15 +14,13 @@ const RepositoryDetailPage: NextPage<IProps> = (props)=>{
     const {github_repo} = props.repo;
 
     useEffect(()=>{
-      
       async function loadSubscribers(){
          const subscribers1:any = await axios.get(github_repo.subscribers_url)
-       
          setSubscribers(subscribers1.data);
       }
       
       loadSubscribers();
-    });
+   },[]); //pass empty array to avolid call after each update.
 
     return  <Layout hideStartDetails>
     <header className="masthead bg-primary text-white text-center">
@@ -38,10 +37,17 @@ const RepositoryDetailPage: NextPage<IProps> = (props)=>{
           <div className="col-sm-12">
                 <h6>Subscribers</h6>
         
-                {subscribers.map(s=><img className="subscriberImage" src={s.avatar_url}/>)}
+                {subscribers.map(s=><img key={s.id} className="subscriberImage" src={s.avatar_url}/>)}
                
           </div>
-        </div>         
+        </div>
+        <div className="row">
+          <div className="col-sm-12">
+              <hr/>
+               
+          </div>
+        </div>
+        <Comments/>         
       </section>
 
       <style jsx>{`
