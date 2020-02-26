@@ -53,7 +53,7 @@ app.prepare().then(() => {
   server.use(passport.session());
   server.use(express.static('public'));
   server.use(cookieParser());
-  
+  server.use(express.json());
   server.get('/auth/github',  passport.authenticate('github'));
 
   
@@ -111,10 +111,30 @@ app.prepare().then(() => {
   });
 
   server.get("/repository/:id", async(req,res)=>{
-    console.log("####" + req.params.id);
-    const repo = await facade.findRepo(req.params.id);
-    console.log("####1212" + repo);
-    return app.render(req, res, '/repository_detail_page', { repo })
+
+        
+      const jwtToken = req.cookies.cookieName;
+      let user = null;
+
+      if(jwtToken){
+     
+        try{
+          const {id} = jwt.verify(jwtToken, config.get('jwtPrivateKey'));
+          user = await facade.getUser(id);
+        }catch(ex){
+          console.log(ex);
+        }
+      
+      }
+   
+      try{
+       let repoid =  req.params.id;
+      const repo = await facade.findRepo(repoid);
+   
+      return app.render(req, res, '/repository_detail_page', { userdetails: user?user.user:null, repo })
+      }catch(ex){
+        console.log(ex);
+      }
 
   })
 
@@ -125,6 +145,42 @@ app.prepare().then(() => {
     const repos =  await facade.getAllRepos();
 
     return app.render(req, res, '/index', { repos })
+  });
+
+
+  server.get("/comments/:repoId", async(req, res) => {
+    
+  
+    const comments =  await facade.getComments(req.params.repoId);
+    res.send(comments);
+   
+
+    
+  });
+
+  server.post("/comments", async(req, res)=>{
+    const jwtToken = req.cookies.cookieName;
+    let user = null;
+
+    if(jwtToken){
+   
+      try{
+        const {id} = jwt.verify(jwtToken, config.get('jwtPrivateKey'));
+        user = await facade.getUser(id);
+      }catch(ex){
+        console.log(ex);
+      }
+    
+    }else{
+      res.status(401).send('Access denied. No token provided.');
+    }
+    
+    let comment_request = req.body;
+    comment_request.comment_from = user._id;
+    
+    const comment = facade.createComment(comment_request);
+    res.send(comment);
+
   });
     
   server.get("/url", (req, res, next) => {

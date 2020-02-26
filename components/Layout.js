@@ -47,17 +47,11 @@ crossOrigin="anonymous"
         <div className="collapse navbar-collapse" id="navbarResponsive">
        
           <ul className="navbar-nav ml-auto">
-            { !username ? 
+          
             <li className="nav-item mx-0 mx-lg-1">
-              <a className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/auth/github">Login</a>
-            </li> : <li/>
-            }
-            { username ? 
-            <li className="nav-item mx-0 mx-lg-1">
-              <a className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/auth/github">{username}</a>
-            </li>
-            : <li/>
-            }
+              <a className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/auth/github"> {username?username:<span>Login</span>}</a>
+            </li> 
+          
           </ul>
         </div>
       </div>

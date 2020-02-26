@@ -1,5 +1,18 @@
 const User = require('../modal/User');
 const Repo = require('../modal/Repo');
+const Comment = require('../modal/Comment');
+
+
+exports.getComments = async function(repoId){
+    const comments = await Comment.find({ repo_id: repoId }).sort({ 'updated' : 'desc'}).populate({ path: 'comment_from', select: '-token' });
+    return comments;
+}
+
+
+exports.createComment = async function(obj){
+    let newComment  = new Comment(obj);
+    return await newComment.save();
+}
 
 exports.saveOrUpdateUser = async function(authToken, gitHubUserObj){
 
