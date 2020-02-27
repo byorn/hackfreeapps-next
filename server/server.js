@@ -54,6 +54,12 @@ app.prepare().then(() => {
   server.use(express.static('public'));
   server.use(cookieParser());
   server.use(express.json());
+  server.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+  });
+
   server.get('/auth/github',  passport.authenticate('github'));
 
   
@@ -152,6 +158,7 @@ app.prepare().then(() => {
     
   
     const comments =  await facade.getComments(req.params.repoId);
+
     res.send(comments);
    
 

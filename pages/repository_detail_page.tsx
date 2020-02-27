@@ -17,8 +17,12 @@ const RepositoryDetailPage: NextPage<IProps> = (props)=>{
 
     useEffect(()=>{
       async function loadSubscribers(){
+        try{
          const subscribers1:any = await axios.get(repo.subscribers_url)
          setSubscribers(subscribers1.data);
+        }catch(ex){
+          console.log("byorn:" + ex);
+        }
       }
       
       loadSubscribers();

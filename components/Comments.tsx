@@ -1,6 +1,7 @@
 import { FormControl, Button, Col, Row, Form } from 'react-bootstrap';
-import { useState, useEffect } from 'react';
+import { useState, useEffect} from 'react';
 import axios from 'axios';
+import React from 'react';
 
 interface IProps {
     githubrepos_id:string,
@@ -13,19 +14,20 @@ const Comments: React.FC<IProps> = (props) => {
     const [newComment, setNewComment] = useState("");
     const {githubrepos_id, repo_id, hasUser} = props;
     
+
     
     const buttonStyle = {
         border: '1px solid',
 
     };
 
+    
+
     async function loadComments(){
-        try{
+       
         const comments:any = await axios.get(`/comments/${repo_id}`);
         setComments(comments.data);
-        }catch(ex){
-            console.log("byorn: " + ex)
-        }
+       
      }
     useEffect(()=>{
         loadComments();
@@ -36,19 +38,36 @@ const Comments: React.FC<IProps> = (props) => {
     };
 
     const addComment=async()=>{
-        console.log("before");
+       
         let result:any = await axios.post("/comments",{githubrepos_id, repo_id,comment:newComment}, {withCredentials: true});
-        console.log("after" + result);
+        
+        setNewComment("");
+       
         await loadComments();  
     }
 
     console.log(comments);
 
     let commentsData = comments.map((comment)=>{
-        return <Row key={comment._id}>
-                <Col lg={4}>  <img className="ownerImage" src={comment.comment_from.user.photos[0]}/></Col>
-                <Col lg={4}> {comment.comment}</Col>
-                <Col lg={4}> </Col>
+        return <Row key={comment._id} className="mt-2 mb-5">
+                <Col sm={0} lg={4}> </Col>
+                <Col sm={12} lg={4}> <Row>
+                             <Col xs={3} sm={3} lg={2}><a href={comment.comment_from.user.profileUrl}><img style={{width:'70px',height:'70px'}} src={comment.comment_from.user.photos[0].value}/></a></Col>
+                             <Col xs={9} sm={9} lg={10} className="text-left">
+                                <Row>
+                                <Col sm={12} lg={12}>
+                                 <Form.Label>{comment.comment_from.user.displayName} </Form.Label>
+                                 </Col>
+                                 </Row>
+                                 <Row>
+                                <Col sm={12} lg={12}>
+                                 <i>{comment.comment} </i>
+                                 </Col>
+                                 </Row>
+                             </Col> 
+                             </Row>
+                </Col>
+                <Col sm={0} lg={4}> </Col>
             </Row>
         
     })
@@ -63,7 +82,7 @@ const Comments: React.FC<IProps> = (props) => {
 
             <Row>
                 <Col sm={0} lg={4}> </Col>
-                <Col sm={12} lg={4}>  {hasUser?<Form.Control as="textarea" rows="3" onChange={onInputChange}/>:<Form.Control disabled as="textarea" rows="3" onChange={onInputChange}/>}
+                <Col sm={12} lg={4}>  {hasUser?<Form.Control value={newComment} as="textarea" rows="3" onChange={onInputChange}/>:<Form.Control disabled as="textarea" rows="3" onChange={onInputChange}/>}
                 </Col>
                 <Col sm={0} lg={4}> </Col>
             </Row>
@@ -74,6 +93,7 @@ const Comments: React.FC<IProps> = (props) => {
             </Row>
 
             {commentsData}
+           
         </>
     );
 
