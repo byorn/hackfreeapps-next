@@ -146,11 +146,23 @@ app.prepare().then(() => {
 
   server.get("/", async(req, res, next) => {
     
-    console.log('Cookies: ', req.cookies)
+    const jwtToken = req.cookies.cookieName;
+    let user = null;
+
+    if(jwtToken){
+   
+      try{
+        const {id} = jwt.verify(jwtToken, config.get('jwtPrivateKey'));
+        user = await facade.getUser(id);
+      }catch(ex){
+        console.log(ex);
+      }
+    
+    }
 
     const repos =  await facade.getAllRepos();
 
-    return app.render(req, res, '/index', { repos })
+    return app.render(req, res, '/index', { repos, userdetails: user?user.user:null })
   });
 
 

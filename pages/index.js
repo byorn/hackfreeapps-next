@@ -6,11 +6,11 @@ import { Row, Col } from "react-bootstrap";
 
 const Index = (props) => {
 
-  const {repos} = props;
+  const {repos, userdetails} = props;
 
   return (
    
-    <Layout>
+    <Layout username={userdetails?userdetails.username:null}>
 
       <section className="container-fluid bg-primary text-center">
         <Row>
@@ -37,9 +37,9 @@ const Index = (props) => {
 
 }
 
-Index.getInitialProps = ({ query: { repos } }) => {
+Index.getInitialProps = ({ query: { repos, userdetails } }) => {
  
-  return { repos }
+  return { repos,userdetails }
 }
 
 export default Index;

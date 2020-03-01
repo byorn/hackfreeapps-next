@@ -1,7 +1,8 @@
-import { FormControl, Button, Col, Row, Form } from 'react-bootstrap';
+import {  Button, Col, Row, Form } from 'react-bootstrap';
 import { useState, useEffect} from 'react';
 import axios from 'axios';
 import React from 'react';
+import CommentAlert from './CommentAlert';
 
 interface IProps {
     githubrepos_id:string,
@@ -13,7 +14,9 @@ const Comments: React.FC<IProps> = (props) => {
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState("");
     const {githubrepos_id, repo_id, hasUser} = props;
-    
+    const [commentResponse, setCommentResponse] = useState(
+        {commentResponseText: "Share your thoughts on this project! Leave a comment below:",
+        isError:false});
 
     
     const buttonStyle = {
@@ -38,12 +41,20 @@ const Comments: React.FC<IProps> = (props) => {
     };
 
     const addComment=async()=>{
+
+        if(newComment.length<1){
+            setCommentResponse({isError:true,commentResponseText:"Err ... ! You need say something about this project !"})
+        }
+        else{
        
-        let result:any = await axios.post("/comments",{githubrepos_id, repo_id,comment:newComment}, {withCredentials: true});
+            let result:any = await axios.post("/comments",{githubrepos_id, repo_id,comment:newComment}, {withCredentials: true});
+            
+            setNewComment("");
         
-        setNewComment("");
-       
-        await loadComments();  
+            await loadComments();  
+
+            setCommentResponse({isError:false,commentResponseText:"Cool! Thanks for your feedback"})
+        }
     }
 
     console.log(comments);
@@ -76,7 +87,7 @@ const Comments: React.FC<IProps> = (props) => {
         <>
             <Row>
                 <Col sm={0}  lg={4}></Col>
-                <Col sm={12} lg={4}><Form.Label>Share your thoughts on this project! Leave a comment below:</Form.Label></Col>
+                <Col sm={12} lg={4}><CommentAlert isError={commentResponse.isError} text={commentResponse.commentResponseText}/></Col>
                 <Col sm={0}  lg={4}> </Col>
             </Row>
 
