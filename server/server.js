@@ -165,6 +165,27 @@ app.prepare().then(() => {
     return app.render(req, res, '/index', { repos, userdetails: user?user.user:null })
   });
 
+  server.get("/repos/:tech/:domain", async(req, res, next) => {
+    
+    const jwtToken = req.cookies.cookieName;
+    let user = null;
+
+    if(jwtToken){
+   
+      try{
+        const {id} = jwt.verify(jwtToken, config.get('jwtPrivateKey'));
+        user = await facade.getUser(id);
+      }catch(ex){
+        console.log(ex);
+      }
+    
+    }
+
+    const repos =  await facade.getReposBy(req.params.tech, req.params.domain);
+    res.send(repos);
+
+  });
+
 
   server.get("/comments/:repoId", async(req, res) => {
     

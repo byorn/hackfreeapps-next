@@ -3,9 +3,14 @@ import React from 'react';
 import { Dropdown } from 'react-bootstrap';
 const SelectDropDown = (props) => {
 
-  const { items } = props;
+  const { items, onSelect } = props;
   const [selectedItem, setSelectedItem] = useState(items[0]);
 
+
+  const onSelectDropDown = (item) => {
+      setSelectedItem(item);
+      onSelect(item);
+  }
 
   return <Dropdown>
 
@@ -14,7 +19,7 @@ const SelectDropDown = (props) => {
   </Dropdown.Toggle>
 
   <Dropdown.Menu>
-    {items.map((item)=><Dropdown.Item onSelect={()=>setSelectedItem(item)} key={item}>{item}</Dropdown.Item>)}
+    {items.map((item)=><Dropdown.Item onSelect={()=>onSelectDropDown(item)} key={item}>{item}</Dropdown.Item>)}
   </Dropdown.Menu>
 
 
