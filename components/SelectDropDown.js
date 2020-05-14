@@ -4,7 +4,7 @@ import { Dropdown } from 'react-bootstrap';
 const SelectDropDown = (props) => {
 
   const { items, onSelect } = props;
-  const [selectedItem, setSelectedItem] = useState(items[0]);
+  const [selectedItem, setSelectedItem] = useState("All");
 
 
   const onSelectDropDown = (item) => {

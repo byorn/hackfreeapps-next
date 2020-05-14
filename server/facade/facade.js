@@ -1,6 +1,7 @@
 const User = require('../modal/User');
 const Repo = require('../modal/Repo');
 const Comment = require('../modal/Comment');
+const RefData = require('../modal/RefData');
 
 
 exports.getComments = async function(repoId){
@@ -53,6 +54,10 @@ exports.getReposBy = async function(tech, domain){
 
 exports.getAllRepos = async function(){
         return await Repo.find({});
+}
+
+exports.getRefData = async function(){
+    return await RefData.find();
 }
 
 exports.findRepo = async function(id){

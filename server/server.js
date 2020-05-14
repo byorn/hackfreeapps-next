@@ -187,6 +187,20 @@ app.prepare().then(() => {
   });
 
 
+  server.get("/ref", async(req, res) => {
+    
+  
+
+
+    const refData =  await facade.getRefData();
+
+    console.log(refData);
+    res.send(refData);
+   
+
+    
+  })
+
   server.get("/comments/:repoId", async(req, res) => {
     
   

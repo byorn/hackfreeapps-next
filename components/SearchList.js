@@ -7,6 +7,7 @@ const SearchList = (props)=>{
 
     let listOfRepoItems = [[]];
     let counter = 0;
+ 
     repos.forEach((o, i) =>{
       
       if(i%4!==0){
@@ -14,7 +15,7 @@ const SearchList = (props)=>{
           listOfRepoItems[counter].push(
             <Col key={o._id} className="mb-3">
               <Card  className="cardWidth">
-              <Card.Img variant="top" src={o.github_repo.owner.avatar_url} />
+              <Card.Img variant="top" src={o.github_repo.owner?o.github_repo.owner.avatar_url:''} />
               <Card.Body>
                 <Card.Title>{o.github_repo.name}</Card.Title>
                 <Card.Text>
@@ -36,7 +37,7 @@ const SearchList = (props)=>{
           listOfRepoItems[counter].push(
             <Col key={o._id} className="mb-3">
               <Card   className="cardWidth">
-              <Card.Img variant="top" src={o.github_repo.owner.avatar_url} />
+              <Card.Img variant="top" src={o.github_repo.owner?o.github_repo.owner.avatar_url:''} />
               <Card.Body>
                 <Card.Title>{o.github_repo.name}</Card.Title>
                 <Card.Text>
