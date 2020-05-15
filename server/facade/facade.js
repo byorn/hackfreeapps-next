@@ -49,6 +49,16 @@ exports.getUser = async function(id){
 }
 
 exports.getReposBy = async function(tech, domain){
+
+    if(tech == "All" && domain != "All"){
+        return await Repo.find({"domain":domain});    
+    }
+    if(tech != "All" && domain == "All"){
+        return await Repo.find({"tech":tech});    
+    }
+    if(tech == "All" && domain == "All"){
+        return await Repo.find();    
+    }
     return await Repo.find({"tech":tech, "domain":domain});
 }
 
