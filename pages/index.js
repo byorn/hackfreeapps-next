@@ -21,7 +21,7 @@ const Index = (props) => {
     async function loadRepositories(){
       try{
        
-           const repositories = await axios.get(`/repos/${searchLanguage}/${searchDomain}`)
+           const repositories = await axios.get(`/repos/${searchLanguage}/${searchDomain}`);
            if(searchLanguage=='All' && searchDomain=='All'){
             setRepositories(props.repos);
            }else{
@@ -39,12 +39,12 @@ const Index = (props) => {
   const onLanguageSelect = (item)=>{
     setSearchLanguage(item);
     
-  }
+  };
 
   const onDomainSelect = (item)=>{
     setSearchDomain(item);
     
-  }
+  };
 
   return (
    
@@ -53,7 +53,7 @@ const Index = (props) => {
       <section className="container-fluid bg-primary text-center">
         <Row>
           <Col xs="0" lg="2">
-              
+              &nbsp;
           </Col>
           <Col xs="12" md="12" lg="8">
               <Selection onLanguageSelect={(item)=>onLanguageSelect(item)} onDomainSelect={(item)=>onDomainSelect(item)}/>

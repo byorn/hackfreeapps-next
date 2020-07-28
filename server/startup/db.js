@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
-const dbInit = function(){
+const dbInit = async function(){
     mongoose.Promise = global.Promise;
-    mongoose.connect("mongodb://localhost:27017/hackfreeapps",{useNewUrlParser: true,useUnifiedTopology: true });
-}
+    await mongoose.connect("mongodb://localhost:27017/hackfreeapps",{useNewUrlParser: true,useUnifiedTopology: true });
+};
 
 module.exports = dbInit;

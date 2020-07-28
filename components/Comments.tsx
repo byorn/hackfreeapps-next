@@ -47,7 +47,7 @@ const Comments: React.FC<IProps> = (props) => {
         }
         else{
        
-            let result:any = await axios.post("/comments",{githubrepos_id, repo_id,comment:newComment}, {withCredentials: true});
+            let result:any = await axios.post("/comments",c);
             
             setNewComment("");
         
