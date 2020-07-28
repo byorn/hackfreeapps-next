@@ -242,7 +242,7 @@ app.prepare().then(() => {
     
   server.get("/url", (req, res, next) => {
    
-    logger.info(req.body);
+    logger.info("test" + req.body);
     res.send(["Tony","Lisa","Michael","Ginger","Food"]);
   });
  
