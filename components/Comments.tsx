@@ -93,7 +93,7 @@ const Comments: React.FC<IProps> = (props) => {
 
             <Row>
                 <Col sm={0} lg={4}> </Col>
-                <Col sm={12} lg={4}>  {hasUser?<Form.Control value={newComment} as="textarea" rows="3" onChange={onInputChange}/>:<Form.Control disabled as="textarea" rows="3" onChange={onInputChange}/>}
+                <Col sm={12} lg={4}>  {hasUser?<Form.Control value={newComment} as="textarea" rows={3} onChange={onInputChange}/>:<Form.Control disabled as="textarea" rows={3} onChange={onInputChange}/>}
                 </Col>
                 <Col sm={0} lg={4}> </Col>
             </Row>
