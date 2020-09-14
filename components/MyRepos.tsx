@@ -7,7 +7,7 @@ interface MyProps {
 
 const MyRepos = (props: MyProps) => {
 
-  const assignPR = (hooks_url) => {
+  const assignPR = (hooks_url:string) => {
 
     let payload = {
       "name": "web",

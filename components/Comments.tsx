@@ -59,7 +59,7 @@ const Comments: React.FC<IProps> = (props) => {
 
     console.log(comments);
 
-    let commentsData = comments.map((comment)=>{
+    let commentsData = comments.map((comment: any)=>{
         return <Row key={comment._id} className="mt-2 mb-5">
                 <Col sm={0} lg={4}> </Col>
                 <Col sm={12} lg={4}> <Row>
