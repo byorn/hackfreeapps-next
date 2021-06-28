@@ -19,7 +19,7 @@ const Index = (props) => {
 
   useEffect(()=>{
     async function loadRepositories(){
-      try{
+
        
            const repositories = await axios.get(`/repos/${searchLanguage}/${searchDomain}`);
            if(searchLanguage=='All' && searchDomain=='All'){
@@ -28,12 +28,13 @@ const Index = (props) => {
             setRepositories(repositories.data);
            }
           
-      }catch(ex){
-        console.log(ex);
-      }
-    }
     
-    loadRepositories();
+    }
+    try {
+      loadRepositories();
+    }catch(err){
+      console.log("Error occurred")
+    }
  },[searchLanguage,searchDomain]); 
 
   const onLanguageSelect = (item)=>{
